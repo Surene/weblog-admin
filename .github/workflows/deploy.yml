@@ -1,0 +1,32 @@
+name: Deploy - Admin
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [master, main]
+  #   paths:
+  #     - 'src/**'
+  #     - 'public/**'
+  #     - 'Dockerfile'
+  #     - 'nginx.conf'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to server via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ${{ secrets.DEPLOY_PATH }}
+            docker-compose pull weblog-admin
+            docker-compose up -d weblog-admin
+            docker-compose ps
