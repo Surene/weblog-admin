@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   { path: '/login', name: 'login', component: () => import('../views/Login.vue') },
   { path: '/', name: 'articles', component: () => import('../views/ArticleList.vue') },
+  { path: '/dashboard', name: 'dashboard', component: () => import('../views/Dashboard.vue') },
   { path: '/editor/:id?', name: 'editor', component: () => import('../views/ArticleEditor.vue') },
   { path: '/categories', name: 'categories', component: () => import('../views/CategoryManager.vue') },
   { path: '/draft-history/:articleId', name: 'draftHistory', component: () => import('../views/DraftHistory.vue') },

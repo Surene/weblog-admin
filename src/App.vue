@@ -12,6 +12,10 @@
         active-text-color="#fff"
         style="border-right:none"
       >
+        <el-menu-item index="/dashboard">
+          <el-icon><Histogram /></el-icon>
+          <span>Dashboard</span>
+        </el-menu-item>
         <el-menu-item index="/">
           <el-icon><Document /></el-icon>
           <span>Articles</span>
@@ -46,7 +50,7 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
-import { Document, Collection, Setting, ChatDotRound } from '@element-plus/icons-vue'
+import { Document, Collection, Setting, ChatDotRound, Histogram } from '@element-plus/icons-vue'
 import { SwitchButton } from '@element-plus/icons-vue'
 const route = useRoute()
 
